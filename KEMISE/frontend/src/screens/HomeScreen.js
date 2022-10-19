@@ -14,7 +14,6 @@ function HomeScreen() {
   }, []);
   return (
     <div>
-      {' '}
       <h1>Featured Products</h1>
       <div className="products">
         {products.map((product) => (
@@ -33,7 +32,7 @@ function HomeScreen() {
             </div>
           </div>
         ))}
-      </div>{' '}
+      </div>
     </div>
   );
 }
