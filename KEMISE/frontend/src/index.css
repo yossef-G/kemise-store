@@ -7,27 +7,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-header {
-  background-color: aquamarine;
-  padding: 1rem;
+.site-container {
+  min-height: 100vh;
 }
-header a{
-  color: rgb(139, 156, 43);
-  font-weight: bold;
-  font-size: 25px;
-  text-decoration: none;
-
-}
-
 main {
-  padding: 1rem;
+  flex: 1;
 }
 .products {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-
+.rating span {
+  color: aquamarine;
+}
 .product {
   border: 1px black solid;
   margin: 1rem;
@@ -37,6 +30,7 @@ main {
   width: 100%;
   max-width: 400px;
 }
+
 .product-info {
   padding: 1rem;
 }
