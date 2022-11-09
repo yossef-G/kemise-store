@@ -52,38 +52,35 @@ function ProductScreen() {
   ) : (
     <div>
       <Row>
-        <Col md={6}>
-          <img
-            className="img-large"
+      <Col md={5} >
+          <img 
+            className="img-large shadow-lg p-0 bg-white rounded"
             src={product.image}
             alt={product.name}
           ></img>
         </Col>
-        <Col md={3} >
-          <ListGroup variant="flush" >
-            <ListGroup.Item >
-              <Helmet >
+        <Col md={3} className='text-center'>
+          <ListGroup as="ul">
+            <ListGroup.Item as="li" variant="success">
+              <Helmet>
                 <title>{product.name}</title>
               </Helmet>
-              <h1>{product.name}</h1>
+              <h2>{product.name}</h2>
             </ListGroup.Item>
-            <ListGroup.Item>
+            <ListGroup.Item >
               <Rating
                 rating={product.rating}
                 numReviews={product.numReviews}
               ></Rating>
             </ListGroup.Item>
-            <ListGroup.Item>Pirce : ${product.price}</ListGroup.Item>
-            <ListGroup.Item>
-              Description:
-              <p>{product.description}</p>
-            </ListGroup.Item>
+            <ListGroup.Item > <strong>Price : <strong>${product.price}</strong></strong></ListGroup.Item>
+            <ListGroup.Item><em><strong>description : {product.description}</strong></em></ListGroup.Item>
           </ListGroup>
         </Col>
         <Col md={3} >
           <Card>
-            <Card.Body>
-              <ListGroup variant="flush" >
+            <Card.Body className='border border-5 '>
+              <ListGroup variant="flush" className='border border-5 border-primary rounded text-center' >
                 <ListGroup.Item >
                   <Row>
                     <Col >Price:</Col>

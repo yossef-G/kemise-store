@@ -29,10 +29,10 @@ main {
 .img-large {
   max-width: 80%;
 }
-.ListGroup {
+/* .ListGroup {
   text-align: center;
   font-size: large;
-}
+} */
 .img-thumbnail {
   height: 100px;
 }
