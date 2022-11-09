@@ -1,20 +1,67 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import { LinkContainer } from 'react-router-bootstrap';
 
 function App() {
   return (
     <BrowserRouter>
-      <div>
+      <div className="d-flex flex-column site-container">
         <header>
-          <a href="/">kemise</a>
+          <Navbar bg="primary" variant="dark">
+            <Container>
+              <LinkContainer to="/">
+                <Navbar.Brand><h2>🏪 YG-STORE</h2></Navbar.Brand>
+              </LinkContainer>
+            </Container>
+          </Navbar>
         </header>
         <main>
-          <Routes>
-            <Route path="/product/:slug" element={<ProductScreen/>} />
-            <Route path="/" element={<HomeScreen />} />
-          </Routes>
+          <Container className="mt-3">
+            <Routes className="p-3">
+              <Route path="/product/:slug" element={<ProductScreen />} />
+              <Route path="/" element={<HomeScreen />} />
+            </Routes>
+          </Container>
         </main>
+        <footer className="border-info bg-info ">
+          <div className="container">
+            <section>
+              <div className="d-flex justify-content-between p-2 ">
+                <h4 className="px-4 fst-italic pt-2">Register for free!!</h4>
+                <button
+                  type="button"
+                  className="btn btn-outline-info border border-light btn-light p-1 btn-rounded"
+                >
+                  <Link className="nav-link px-1 mb-1" to="/signup">
+                    Sign up
+                  </Link>
+                </button>
+                <div className="px-4  gap-2 pt-2">
+                  <button className="d-flex justify-content-center border border-light btn-light  pt-1 mb-1 bg-body rounded gap-3 ">
+                    <a href="https://www.linkedin.com/in/yossef-g/">
+                      <i className="fab fa-instagram-square"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yossef-g/">
+                      <i className="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yossef-g/">
+                      <i className="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yossef-g/">
+                      <i className="fab fa-linkedin-in "></i>
+                    </a>
+                  </button>
+                </div>
+                <strong className="ms-auto p-2 bd-highlight">
+                  &copy;YG-STORE-INC.All Right Reserved.
+                </strong>
+              </div>
+            </section>
+          </div>
+        </footer>
       </div>
     </BrowserRouter>
   );
