@@ -29,12 +29,9 @@ main {
 .img-large {
   max-width: 80%;
 }
-/* .ListGroup {
-  text-align: center;
-  font-size: large;
-} */
+
 .img-thumbnail {
-  height: 100px;
+  height: 80px;
 }
 
 .small-container {

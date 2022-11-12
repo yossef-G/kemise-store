@@ -1,6 +1,7 @@
 const data={
   products: [
     {
+      _id:'1',
       name: 'porior slim shirt',
       slug: 'porior-slim-shirt',
       category: 'Shirts',
@@ -13,6 +14,7 @@ const data={
       description: 'high quality shirt',
     },
     {
+      _id:'2',
       name: 'timberland shirt',
       slug: 'timberland-slim-shirt1',
       category: 'Shirts',
@@ -25,6 +27,7 @@ const data={
       description: 'high quality shirt',
     },
     {
+      _id:'3',
       name: 'nautica slim shirt',
       slug: 'nautica-slim-shirt2',
       category: 'pantes',
@@ -37,6 +40,7 @@ const data={
       description: 'high quality pantes',
     },
     {
+      _id:'4',
       name: 'nautica slim shirt1',
       slug: 'nautica-slim-shirt3',
       category: 'pantes',
@@ -49,6 +53,7 @@ const data={
       description: 'high quality pantes',
     },
     {
+      _id:'5',
       name: 'timberland slim pantes',
       slug: 'timberland-slim-pantes1',
       category: 'Shirts',
@@ -61,6 +66,7 @@ const data={
       description: 'high quality shirt',
     },
     {
+      _id:'6',
       name: 'castro pantes',
       slug: 'castro-slim-pantes2',
       category: 'Shirts',
@@ -73,6 +79,7 @@ const data={
       description: 'high quality shirt',
     },
     {
+      _id:'7',
       name: 'zara slim pantes',
       slug: 'zara-slim-pantes3',
       category: 'pantes',
@@ -85,6 +92,7 @@ const data={
       description: 'high quality pantes',
     },
     {
+      _id:'8',
       name: 'diesel slim pantes',
       slug: 'diesel-slim-pantes4',
       category: 'pantes',
@@ -97,6 +105,7 @@ const data={
       description: 'high quality pantes',
     },
     {
+      _id:'9',
       name: 'nike slim shirt',
       slug: 'nike-slim-shirt4',
       category: 'Shirts',
@@ -109,6 +118,7 @@ const data={
       description: 'high quality shirt',
     },
     {
+      _id:'10',
       name: 'adidas shirt',
       slug: 'adidas-slim-shirt5',
       category: 'Shirts',
@@ -121,6 +131,7 @@ const data={
       description: 'high quality shirt',
     },
     {
+      _id:'11',
       name: 'puma slim shirt',
       slug: 'puma-slim-shirt6',
       category: 'pantes',
@@ -133,6 +144,7 @@ const data={
       description: 'high quality pantes',
     },
     {
+      _id:'12',
       name: 'nautica slim shirt7',
       slug: 'nautica-slim-shirt7',
       category: 'pantes',
@@ -145,6 +157,7 @@ const data={
       description: 'high quality pantes',
     },
     {
+      _id:'13',
       name: 'nike slim pantes4',
       slug: 'nike-slim-pantes5',
       category: 'Shirts',
@@ -157,6 +170,7 @@ const data={
       description: 'high quality shirt',
     },
     {
+      _id:'14',
       name: 'adidas pantes3',
       slug: 'adidas-slim-pantes6',
       category: 'Shirts',
@@ -169,6 +183,7 @@ const data={
       description: 'high quality shirt',
     },
     {
+      _id:'15',
       name: 'puma slim pantes2',
       slug: 'puma-slim-pantes7',
       category: 'pantes',
@@ -181,6 +196,7 @@ const data={
       description: 'high quality pantes',
     },
     {
+      _id:'16',
       name: 'nautica slim pantes1',
       slug: 'nautica-slim-pantes8',
       category: 'pantes',

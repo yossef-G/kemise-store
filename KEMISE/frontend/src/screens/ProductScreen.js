@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { useEffect, useReducer } from 'react';
-import { useParams } from 'react-router-dom';
+import { useContext, useEffect, useReducer } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -9,6 +9,10 @@ import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Rating from '../components/Rating';
 import { Helmet } from 'react-helmet-async';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
+import { getError } from '../utils';
+import { Store } from '../Store';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -24,9 +28,9 @@ const reducer = (state, action) => {
 };
 
 function ProductScreen() {
+  //const navigate = useNavigate();
   const params = useParams();
   const { slug } = params;
-
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
     product: [],
     loading: true,
@@ -39,27 +43,44 @@ function ProductScreen() {
         const result = await axios.get(`/api/products/slug/${slug}`);
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: err.message });
+        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
       }
     };
     fetchData();
   }, [slug]);
 
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { cart } = state;
+  const addToCartHandler = async () => {
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    const { data } = await axios.get(`/api/products/${product._id}`);
+    if (data.countInStock < quantity) {
+      toast.info('This item is currently out of stock! ');
+      return;
+    }
+    ctxDispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...product, quantity },
+    });
+    //navigate('/cart');
+  };
+
   return loading ? (
-    <div>Loading...</div>
+    <LoadingBox>Loading...</LoadingBox>
   ) : error ? (
-    <div>{error}</div>
+    <MessageBox>{error}</MessageBox>
   ) : (
     <div>
       <Row>
-      <Col md={5} >
-          <img 
+        <Col md={5}>
+          <img
             className="img-large shadow-lg p-0 bg-white rounded"
             src={product.image}
             alt={product.name}
           ></img>
         </Col>
-        <Col md={3} className='text-center'>
+        <Col md={3} className="text-center py-3">
           <ListGroup as="ul">
             <ListGroup.Item as="li" variant="success">
               <Helmet>
@@ -67,23 +88,35 @@ function ProductScreen() {
               </Helmet>
               <h2>{product.name}</h2>
             </ListGroup.Item>
-            <ListGroup.Item >
+            <ListGroup.Item>
               <Rating
                 rating={product.rating}
                 numReviews={product.numReviews}
               ></Rating>
             </ListGroup.Item>
-            <ListGroup.Item > <strong>Price : <strong>${product.price}</strong></strong></ListGroup.Item>
-            <ListGroup.Item><em><strong>description : {product.description}</strong></em></ListGroup.Item>
+            <ListGroup.Item>
+              {' '}
+              <strong>
+                Price : <strong>${product.price}</strong>
+              </strong>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <em>
+                <strong>description : {product.description}</strong>
+              </em>
+            </ListGroup.Item>
           </ListGroup>
         </Col>
-        <Col md={3} >
+        <Col md={3} className="text-center py-3">
           <Card>
-            <Card.Body className='border border-5 '>
-              <ListGroup variant="flush" className='border border-5 border-primary rounded text-center' >
-                <ListGroup.Item >
+            <Card.Body className="border border-5 ">
+              <ListGroup
+                variant="flush"
+                className="border border-5 border-primary rounded text-center"
+              >
+                <ListGroup.Item>
                   <Row>
-                    <Col >Price:</Col>
+                    <Col>Price:</Col>
                     <Col>${product.price}</Col>
                   </Row>
                 </ListGroup.Item>
@@ -99,11 +132,12 @@ function ProductScreen() {
                     </Col>
                   </Row>
                 </ListGroup.Item>
-
                 {product.countInStock > 0 && (
                   <ListGroup.Item>
                     <div className="d-grid">
-                      <Button variant="primary">Add to Cart</Button>
+                      <Button onClick={addToCartHandler} variant="primary">
+                        Add to Cart
+                      </Button>
                     </div>
                   </ListGroup.Item>
                 )}

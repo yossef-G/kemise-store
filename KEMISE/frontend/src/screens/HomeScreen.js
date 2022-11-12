@@ -5,7 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Product from '../components/Product';
 import { Helmet } from 'react-helmet-async';
-// import data from '../data';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -26,7 +27,6 @@ function HomeScreen() {
     loading: true,
     error: '',
   });
-  // const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
@@ -36,11 +36,9 @@ function HomeScreen() {
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: err.message });
       }
-
-      // setProducts(result.data);
     };
     fetchData();
-  }, []);
+  },[]);
   return (
     <div>
       <Helmet>
@@ -49,9 +47,9 @@ function HomeScreen() {
       <h1 className="text-center py-2">Men's Fashion</h1>
       <div className="products" >
         {loading ? (
-          <div>Loading...</div>
+          <LoadingBox>Loading...</LoadingBox>
         ) : error ? (
-          <div>{error}</div>
+          <MessageBox>{error}</MessageBox>
         ) : (
           <Row>
             {products.map((product) => (
