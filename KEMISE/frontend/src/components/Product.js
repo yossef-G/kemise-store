@@ -24,6 +24,7 @@ function Product(props) {
       payload: { ...item, quantity },
     });
   };
+  
   return (
     <Card>
       <Link to={`/product/${product.slug}`}>
