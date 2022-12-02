@@ -1,4 +1,25 @@
+import bcrypt from 'bcryptjs';
 const data = {
+  users: [
+    {
+      name: 'yossef',
+      email: 'admin@test.com',
+      password: bcrypt.hashSync('456789'),
+      isAdmin: true,
+    },
+    {
+      name: 'nisim',
+      email: 'nisim@test.com',
+      password: bcrypt.hashSync('123456'),
+      isAdmin: false,
+    },
+    {
+      name: 'yoav',
+      email: 'yoav@test.com',
+      password: bcrypt.hashSync('123123'),
+      isAdmin: false,
+    },
+  ],
   products: [
     {
       name: 'porior slim shirt',
@@ -6,7 +27,7 @@ const data = {
       category: 'Shirts',
       image: '/images/t1.webp',
       price: 200,
-      countInStock: 10,
+      countInStock: 0,
       brand: 'Nike',
       rating: 4.5,
       numReviews: 10,
@@ -37,7 +58,7 @@ const data = {
       description: 'high quality pantes',
     },
     {
-      name: 'nautica slim shirt',
+      name: 'nautica slim shirt1',
       slug: 'nautica-slim-shirt3',
       category: 'pantes',
       image: '/images/t7.webp',
@@ -133,7 +154,7 @@ const data = {
       description: 'high quality pantes',
     },
     {
-      name: 'nautica slim shirt',
+      name: 'nautica slim shirt7',
       slug: 'nautica-slim-shirt7',
       category: 'pantes',
       image: '/images/t8.webp',
@@ -145,7 +166,7 @@ const data = {
       description: 'high quality pantes',
     },
     {
-      name: 'nike slim pantes',
+      name: 'nike slim pantes4',
       slug: 'nike-slim-pantes5',
       category: 'Shirts',
       image: '/images/t10.webp',
@@ -157,7 +178,7 @@ const data = {
       description: 'high quality shirt',
     },
     {
-      name: 'adidas pantes',
+      name: 'adidas pantes3',
       slug: 'adidas-slim-pantes6',
       category: 'Shirts',
       image: '/images/t12.webp',
@@ -169,7 +190,7 @@ const data = {
       description: 'high quality shirt',
     },
     {
-      name: 'puma slim pantes',
+      name: 'puma slim pantes2',
       slug: 'puma-slim-pantes7',
       category: 'pantes',
       image: '/images/t14.webp',
@@ -181,7 +202,7 @@ const data = {
       description: 'high quality pantes',
     },
     {
-      name: 'nautica slim pantes',
+      name: 'nautica slim pantes1',
       slug: 'nautica-slim-pantes8',
       category: 'pantes',
       image: '/images/t16.webp',

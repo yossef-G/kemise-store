@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #fb6161;
 }
 
 @keyframes App-logo-spin {
@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+.App-footer{
+  color: rgb(29, 77, 207);
+  font-size: large;
+} */

@@ -4,7 +4,9 @@ import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Product from '../components/Product';
-//import data from '../data';
+import { Helmet } from 'react-helmet-async';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -23,10 +25,8 @@ function HomeScreen() {
   const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
     products: [],
     loading: true,
-    error: '',
+    error: "" ,
   });
-
-  //const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
@@ -36,22 +36,30 @@ function HomeScreen() {
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: err.message });
       }
-      //setProducts(result.data);
     };
     fetchData();
   }, []);
   return (
     <div>
-      <h1>Featured Products</h1>
+      <Helmet>
+        <title>YG-STORE</title>
+      </Helmet>
       <div className="products">
         {loading ? (
-          <div>loading...</div>
+          <LoadingBox />
         ) : error ? (
-          <div> {error} </div>
+          <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <Row>
+            <h1 className="text-center">Mens</h1>
             {products.map((product) => (
-              <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
+              <Col
+                key={product.slug}
+                sm={4}
+                md={4}
+                lg={3}
+                className="p-4 mb-5 text-center"
+              >
                 <Product product={product}></Product>
               </Col>
             ))}
